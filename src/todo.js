@@ -1,6 +1,7 @@
 // create function for adding todo
 
-function addTodo() {
+function addTodo(e) {
+  e.preventDefault();
   // get the value of the input
   const todo = document.getElementById('todo').value;
   const priority = document.getElementById('priority').value;
