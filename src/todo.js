@@ -15,6 +15,8 @@ function addTodo(e) {
   }
   // create a new li element
   const li = document.createElement('li');
+
+  li.classList.add('text-red-200');
   // create a text node and append it to the li
   li.appendChild(document.createTextNode(todo));
   li.appendChild(document.createTextNode(priority));
