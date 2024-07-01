@@ -34,6 +34,7 @@ module.exports = {
       title: 'Todo App',
       filename: 'index.html',
       template: path.resolve(__dirname, 'src/index.html'),
+      inject: false,
     }),
   ],
 }
