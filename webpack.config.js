@@ -1,5 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+// const BundleAnalyzerPlugin =
+//   require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = {
   mode: 'development',
@@ -8,8 +10,11 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js',
+    filename: '[name][contenthash].js',
+    clean: true,
+    assetModuleFilename: '[name][ext]',
   },
+  devtool: 'source-map',
   devServer: {
     static: {
       directory: path.resolve(__dirname, 'dist'),
@@ -27,14 +32,30 @@ module.exports = {
         include: path.resolve(__dirname, 'src/styles'),
         use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
+      // backwards compatibility for js files in src folder
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
+      // allow for asset loading
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Todo App',
       filename: 'index.html',
-      template: path.resolve(__dirname, 'src/index.html'),
-      inject: false,
+      template: 'src/template.html',
     }),
+    // new BundleAnalyzerPlugin(),
   ],
 }

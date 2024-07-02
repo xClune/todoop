@@ -25,6 +25,8 @@ function addTodo(e) {
   document.getElementById('todos').appendChild(li);
   // clear the input
   document.getElementById('todo').value = '';
+  document.getElementById('priority').value = 'low';
+  document.getElementById('due-date').value = '';
 }
 
 export default addTodo;
