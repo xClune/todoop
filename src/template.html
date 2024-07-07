@@ -8,7 +8,7 @@
 <body class="w-svw h-svh flex flex-col items-center justify-start">
     <h1 class="text-red-400 text-3xl">To Do v237</h1>
 
-    <form id="todoForm" class="flex flex-col gap-5">
+    <form id="todoForm" class="flex flex-col gap-5 w-2/4">
         <label for="title">Title</label>
         <input name="title" type="text" id="todo" placeholder="Add a new todo">
         <label for="priority">Priority</label>
@@ -19,10 +19,10 @@
         </select>
         <label for="due-date">Due Date:</label>
         <input name="due-date" type="date" id="due-date">
-        <button id="add" class="border border-gray-500 rounded-md hover:bg-slate-500">Add</button>
+        <button id="add" class="border border-gray-500 rounded-md hover:bg-slate-500 flex-wrap">Add</button>
     </form>
     
-    <ul id="todos"></ul>
+    <ul id="todos" class="mt-5 p-5 flex flex-row justify-start gap-x-10"></ul>
 
     
 </body>
